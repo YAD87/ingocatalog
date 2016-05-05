@@ -33,9 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'descrip:ntext',
             'category_id',
             'price',
-            'pict',
+            'pict:image',
             'keywords',
         ],
+
     ]) ?>
 
 </div>

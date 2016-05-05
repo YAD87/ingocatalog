@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
    
 
     <?= $form->field($model, 'nazv') ?>
+    <?= $form->field($model, 'item') ?>
+   
 
     
 

@@ -6,12 +6,14 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Category;
+use app\models\Items;
 
 /**
  * CategorySearch represents the model behind the search form about `app\models\Category`.
  */
 class CategorySearch extends Category
 {
+    public $item;
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ class CategorySearch extends Category
     {
         return [
             [['id'], 'integer'],
-            [['nazv', 'oblogka'], 'safe'],
+            [['nazv', 'oblogka','item'], 'safe'],
         ];
     }
 
@@ -41,7 +43,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = Category::find()->joinWith('items');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,7 +62,8 @@ class CategorySearch extends Category
         ]);
 
         $query->andFilterWhere(['like', 'nazv', $this->nazv])
-            ->andFilterWhere(['like', 'oblogka', $this->oblogka]);
+            ->andFilterWhere(['like', 'oblogka', $this->oblogka])
+            ->andFilterWhere(['like', 'items.title', $this->item]);
 
         return $dataProvider;
     }

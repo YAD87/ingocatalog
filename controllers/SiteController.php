@@ -11,6 +11,7 @@ use app\models\ContactForm;
 use app\models\Posts;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
+use app\models\Items;
 
 
 class SiteController extends Controller
@@ -111,5 +112,17 @@ public function actionUpload()
         }
 
         return $this->render('upload', ['model' => $model]);
+    }
+
+
+
+    public function actionTest()
+
+    {
+         
+
+
+       return $this->render('test');
+
     }
 }

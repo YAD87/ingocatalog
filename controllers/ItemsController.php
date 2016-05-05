@@ -42,7 +42,7 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function actionIndex2()
+    public function actionIndex2($id)
     {
         $searchModel = new ItemsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -50,6 +50,7 @@ class ItemsController extends Controller
         return $this->render('index2', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model'=>$this->findModel($id),
         ]);
     }
 

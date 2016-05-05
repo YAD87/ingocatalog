@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php 
     $dataProvider = new ActiveDataProvider([
-    'query' => Items::find()->with('category'),
+    'query' => Items::find()->with('category')->where(['category_id'=>$model->id]),
     'pagination' => [
         'pageSize' => 10,
     ],
